@@ -7,12 +7,12 @@ import (
 
 func TestGenerateName(t *testing.T) {
 	seed := time.Now().UTC().UnixNano()
-	seeder := NewSeeder(seed)
-	if seeder == nil {
-		t.Errorf("seeder is null %v", seeder)
+	generator := NewGenerator(seed)
+	if generator == nil {
+		t.Errorf("seeder is null %v", generator)
 	}
 
-	name := seeder.GenerateName()
+	name := generator.GenerateName()
 	if name == "" {
 		t.Error("could not generate name")
 	}

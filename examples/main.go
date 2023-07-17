@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	seeder := seeder.NewSeeder(time.Now().UTC().UnixNano())
+	generator := seeder.NewGenerator(time.Now().UTC().UnixNano())
 
-	fmt.Println(seeder.GenerateName())
+	fmt.Println(generator.GenerateName())
 }
