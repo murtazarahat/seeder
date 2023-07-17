@@ -7,8 +7,12 @@ import (
 	"github.com/murtazarahat/seeder"
 )
 
-func main() {
-	generator := seeder.NewGenerator(time.Now().UTC().UnixNano())
+type Student struct {
+	Name string `json:"name"`
+}
 
-	fmt.Println(generator.GenerateName())
+func main() {
+	seeder := seeder.NewSeeder(time.Now().UTC().UnixNano(), Student{Name: "Rahat Murtaza"})
+
+	fmt.Println(seeder.GetData().(Student))
 }

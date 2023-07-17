@@ -1,12 +1,18 @@
 package seeder
 
-type Seeder struct {
-	generator *Generator
+func NewSeeder(seed int64, data any) *Seeder[any] {
+	generator := NewGenerator(seed)
+	return &Seeder[any]{
+		generator: generator,
+		data:      data,
+	}
 }
 
-func NewSeeder(seed int64) *Seeder {
-	generator := NewGenerator(seed)
-	return &Seeder{
-		generator: generator,
-	}
+type Seeder[T any] struct {
+	generator *Generator
+	data      T
+}
+
+func (s Seeder[T]) GetData() T {
+	return s.data
 }
